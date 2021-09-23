@@ -12,6 +12,13 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        //view creada para coger un theme personalizado
+        'view' => [
+            'theme' => [
+                'pathMap' => ['@app/views' => '@app/themes/basic'],
+                'baseUrl' => '@web/themes/basic',
+            ]
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oLGwWz4odDvKLETjm4wLbmzl9pWx1N-M',
