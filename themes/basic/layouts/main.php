@@ -52,13 +52,16 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
+            ['label' => 'Register', 'url' => ['/site/register']]
         ],
     ]);
     NavBar::end();
     ?>
 </header>
-
+<!--<div class="alert alert-danger" role="alert">-->
+<!--    A simple danger alert—check it out!-->
+<!--</div>-->
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <?= Breadcrumbs::widget([

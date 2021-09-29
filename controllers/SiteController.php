@@ -2,13 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\BackendUser;
+use app\models\ContactForm;
+use app\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -124,5 +125,31 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Displays register page
+     *
+     * @return string|Response
+     */
+    public function actionRegister()
+    {
+        $model = new BackendUser();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                $model->username = $_POST['BackendUser']['username'];
+                $model->password = Yii::$app->getSecurity()->generatePasswordHash($_POST['BackendUser']['password']);
+                $model->authkey = md5(random_bytes(5));
+
+                if ($model->save()) {
+                    return $this->redirect(["login"]);
+                }
+            }
+        }
+
+        return $this->render('register', [
+            'model' => $model,
+        ]);
     }
 }

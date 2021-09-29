@@ -10,6 +10,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@pruebas' => '@app/pruebas'
     ],
     'components' => [
         //view creada para coger un theme personalizado
@@ -27,7 +28,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\BackendUser',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -50,6 +51,9 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mycomponent' => [
+            'class' => 'app\components\MyComponent'
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,
