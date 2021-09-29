@@ -53,7 +53,7 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             ),
-            ['label' => 'Register', 'url' => ['/site/register']]
+            ['label' => 'Register', 'url' => ['/users/register']]
         ],
     ]);
     NavBar::end();

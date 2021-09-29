@@ -10,8 +10,6 @@ use yii\web\IdentityInterface;
  * This is the model class for table "backend_user".
  *
  * @property int $id
- * @property string $nombre
- * @property string $apellidos
  * @property string $username
  * @property string $password
  * @property string $authkey
@@ -48,7 +46,7 @@ class BackendUser extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'password'], 'required'],
-            [['nombre', 'apellidos', 'username', 'password', 'authkey'], 'string', 'max' => 300],
+            [['username', 'password', 'authkey'], 'string', 'max' => 300],
             [['authkey'], 'string', 'max' => 50],
         ];
     }
